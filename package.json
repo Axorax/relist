@@ -1,0 +1,27 @@
+{
+  "name": "relist",
+  "version": "1.0.0",
+  "description": "Find the best bots and join servers!",
+  "main": "start.js",
+  "scripts": {
+    "i": "npm install --no-package-lock",
+    "u": "npm un --no-package-lock",
+    "f": "npx prettier --write ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Axorax/relist.git"
+  },
+  "keywords": [
+    "relist"
+  ],
+  "author": "Axorax",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Axorax/relist/issues"
+  },
+  "homepage": "https://github.com/Axorax/relist#readme",
+  "devDependencies": {
+    "prettier": "^2.8.8"
+  }
+}
