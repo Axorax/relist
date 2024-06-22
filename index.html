@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Relist - Find the best bots and join servers!</title>
+		<link rel="stylesheet" href="./static/css/style.css" />
+		<link rel="stylesheet" href="./static/css/index.css" />
+		<link rel="stylesheet" href="./static/css/window.css" />
+		<link rel="stylesheet" href="./static/css/card.css" />
+		<link rel="shortcut icon" href="./static/images/relist.svg" />
+		<meta name="twitter:card" content="summary_large_image" />
+		<meta name="twitter:image" content="https://axorax.github.io/relist/static/images/relist-banner.png" />
+		<meta property="og:image" content="https://axorax.github.io/relist/static/images/relist-banner.png" />
+		<meta name="title" content="Relist" />
+		<meta name="twitter:title" content="Relist" />
+	</head>
+	<body>
+		<div class="landing">
+			<div class="landing-bg"></div>
+			<div class="content">
+				<h1>Relist</h1>
+				<p>Find the best bots and join servers!</p>
+				<br />
+				<div class="button-group">
+					<button onclick="randomBots()" class="s2">✨ Random</button>
+					<a href="https://patreon.com/axorax" target="_blank">
+						<button class="s2" style="border-color: #537fe759">❤️ Donate</button>
+					</a>
+				</div>
+			</div>
+			<div class="side-content">
+				<div class="box">
+					<div class="top">
+						<img src="./static/images/relist.svg" alt="Pfp" />
+						<p class="title">Relist</p>
+					</div>
+					<p class="bio">Official bot for Relist! Login to websites with Revolt, vote for bots, add your own bot and more...</p>
+					<a href="https://app.revolt.chat/bot/xxx" target="_blank">
+						<button class="s1">Invite</button>
+					</a>
+				</div>
+			</div>
+		</div>
+
+		<div id="electric-surge"></div>
+
+		<div class="bot-section">
+			<h2>Explore Bots</h2>
+
+			<relist-flex-0-0>
+				<relist-search>
+					<input type="text" placeholder="Search with bot id or name" class="search-input" />
+					<button class="search-button">Search</button>
+				</relist-search>
+			</relist-flex-0-0>
+
+			<relist-search-tags>
+				<button onclick="randomBots()">🎲 random</button>
+				<button onclick="getBotsFromTag('fun')">#fun</button>
+				<button onclick="getBotsFromTag('music')">#music</button>
+				<input type="text" class="s1" style="width: 8rem; padding: 0.4rem 0.7rem" placeholder="Search tag" onkeydown="if(event.keyCode === 13) { getBotsFromTag(this.value); }" />
+			</relist-search-tags>
+
+			<relist-bots>
+				<div class="bot-wrapper"></div>
+				<div class="end" style="height: 10px; width: 100%"></div>
+			</relist-bots>
+		</div>
+
+		<footer>Made with ❤️ by <a href="https://patreon.com/axorax">Axorax</a></footer>
+
+		<relist-imports>
+			<script src="./scripts/windrag.js"></script>
+			<script src="./scripts/api.js"></script>
+			<script src="./scripts/main.js"></script>
+			<script src="./scripts/search.js"></script>
+			<script src="./scripts/pages/index.js"></script>
+		</relist-imports>
+	</body>
+</html>
