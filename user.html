@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Revlist User Page</title>
+		<link rel="stylesheet" href="./static/css/style.css" />
+		<link rel="stylesheet" href="./static/css/info.css" />
+		<link rel="shortcut icon" href="./static/images/revlist.svg" />
+	</head>
+	<body>
+		<main>
+			<revlist-pf>
+				<revlist-pf-main>
+					<div class="header">
+						<div class="banner">
+							<img alt="Bot Banner" />
+							<div class="pfp">
+								<img alt="Bot Profile Image" />
+							</div>
+						</div>
+						<div class="name">
+							<span></span>
+							<div data-tooltip="Copy user ID">
+								<img src="./static/icons/copy.svg" alt="Copy" />
+							</div>
+						</div>
+					</div>
+
+					<p class="bio"></p>
+				</revlist-pf-main>
+
+				<revlist-pf-info>
+					<div class="details">
+						<div class="title">
+							<img src="./static/icons/info.svg" alt="Details" />
+							<p>Details</p>
+						</div>
+						<div class="content"></div>
+					</div>
+				</revlist-pf-info>
+			</revlist-pf>
+
+			<revlist-imports>
+				<script src="./scripts/windrag.js"></script>
+				<script src="./scripts/api.js"></script>
+				<script src="./scripts/main.js"></script>
+				<script src="./scripts/pages/user.js"></script>
+				<script>
+					fillUserData(new URLSearchParams(window.location.search).get('id'));
+				</script>
+			</revlist-imports>
+
+			<div class="comments">
+				<script src="https://giscus.app/client.js" data-repo="Axorax/revlist" data-repo-id="R_kgDOJwUPwQ" data-category="Comments" data-category-id="DIC_kwDOJwUPwc4CXS0q" data-mapping="url" data-strict="0" data-reactions-enabled="1" data-emit-metadata="0" data-input-position="top" data-theme="dark" data-lang="en" data-loading="lazy" crossorigin="anonymous" async></script>
+			</div>
+		</main>
+	</body>
+</html>

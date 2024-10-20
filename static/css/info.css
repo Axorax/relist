@@ -1,0 +1,192 @@
+/* -- bot.html & user.html Styling -- */
+
+:root {
+	--width: 40rem;
+	--max-w: calc(100% - 2rem);
+}
+
+revlist-pf-info > div .title img {
+	width: 24px;
+	aspect-ratio: 1/1;
+	filter: invert(56%) sepia(40%) saturate(5420%) hue-rotate(203deg) brightness(93%) contrast(94%);
+}
+
+revlist-pf-info > div .title p {
+	font-size: 1.2rem;
+}
+
+revlist-pf-info > div .title {
+	display: flex;
+	gap: 0.7rem;
+	margin-bottom: 1rem;
+}
+
+revlist-pf-info > div .content strong {
+	margin-right: 0.3rem;
+}
+
+revlist-pf-info > div .content li p {
+	opacity: 0.8;
+	white-space: nowrap;
+}
+
+revlist-pf-info > div:not(:first-child) {
+	margin-top: 2rem;
+}
+
+revlist-pf-info > div .content li {
+	list-style: none;
+	padding: 0.1rem 0;
+	font-size: 15px;
+	display: flex;
+}
+
+revlist-pf-info > div {
+	width: 100%;
+	max-width: var(--max-w);
+}
+
+.header {
+	display: flex;
+	justify-content: center;
+	flex-direction: column;
+}
+
+.banner {
+	border: 1px solid #3d3d3d;
+	position: relative;
+	max-width: calc(100vw - 2rem) !important;
+	width: 32rem;
+	height: 10rem;
+	border-radius: 8px;
+}
+
+.banner > img {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	border-radius: 10px;
+}
+
+.pfp {
+	position: absolute;
+	overflow: hidden;
+	background: #111;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	border-radius: 5px;
+	padding: 0.5rem;
+	aspect-ratio: 1/1;
+	width: 70px;
+	left: 50%;
+	transform: translate(-50%);
+	bottom: -2rem;
+}
+
+.pfp img {
+	border-radius: 5px;
+	aspect-ratio: 1/1;
+	width: 60px;
+}
+
+revlist-pf .name {
+	font-size: 1.3rem;
+	margin-top: 3.4rem;
+	display: flex;
+	justify-content: center;
+	animation: slide-up 600ms ease;
+}
+
+revlist-pf .name img {
+	cursor: pointer;
+	filter: invert(1);
+	aspect-ratio: 1/1;
+	width: 15px;
+	margin-left: 0.3rem;
+	animation: none;
+}
+
+revlist-pf .bio {
+	max-width: calc(100vw - 2rem) !important;
+	width: 32rem;
+	border: 1px solid #3d3d3d;
+	border-radius: 5px;
+	padding: 1rem;
+	margin-top: 2rem;
+	line-break: strict;
+	word-wrap: break-word;
+	min-height: 10rem;
+	animation: slide-up 600ms ease;
+}
+
+revlist-pf .bio ul,
+revlist-pf .bio ol {
+	margin-left: 2rem;
+	margin-bottom: 0.5rem;
+}
+
+revlist-pf .owner-card {
+	display: flex;
+	user-select: none;
+	align-items: center;
+	width: max-content;
+	padding: 0.3rem 0.8rem 0.3rem 0.4rem;
+	border-radius: 3rem;
+	border: 1px solid #3d3d3d;
+	background: #171717;
+}
+
+revlist-pf .owner-card:hover {
+	background: #1f1f1f;
+}
+
+revlist-pf .owner-card img {
+	border-radius: 50%;
+	width: 30px;
+	aspect-ratio: 1/1;
+}
+
+revlist-pf .owner-card p {
+	margin-left: 0.7rem;
+}
+
+.comments {
+	width: var(--width);
+	max-width: var(--max-w);
+	position: relative;
+	left: 50%;
+	transform: translate(-50%);
+	margin-top: 5rem;
+	margin-bottom: 2rem;
+}
+
+#invalid-message {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	min-height: calc(100vh - 58px);
+}
+
+.btn-group {
+	gap: 2rem;
+	margin-top: 2rem;
+	padding: 0;
+}
+
+revlist-pf {
+	margin: 2rem 2rem;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	gap: 4rem;
+}
+
+@media screen and (max-width: 600px) {
+	revlist-pf {
+		gap: 2rem;
+	}
+}

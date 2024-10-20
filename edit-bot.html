@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Revlist Bot Edit</title>
+		<link rel="stylesheet" href="./static/css/style.css" />
+		<link rel="shortcut icon" href="./static/images/revlist.svg" />
+		<style>
+			revlist-flex-0-0 .form {
+				margin-top: 2rem;
+				width: 20rem;
+				max-width: calc(100% - 2rem);
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				flex-direction: column;
+				min-height: calc(100vh - 10rem);
+			}
+			revlist-flex-0-0 .form p {
+				line-break: strict;
+			}
+			revlist-flex-0-0 input {
+				width: 100%;
+			}
+			revlist-flex-0-0 .form button {
+				width: 100%;
+			}
+		</style>
+	</head>
+	<body>
+		<main>
+			<revlist-flex-0-0>
+				<div class="form">
+					<input type="text" class="s1 bot-prefix" placeholder="Bot Prefix" /><br />
+					<input type="text" class="s1 bot-tags" placeholder="Tags (separate by comma)" /><br />
+					<button class="s1">Save</button>
+				</div>
+			</revlist-flex-0-0>
+		</main>
+
+		<revlist-imports>
+			<script src="./scripts/windrag.js"></script>
+			<script src="./scripts/api.js"></script>
+			<script src="./scripts/main.js"></script>
+			<script>
+				const id = new URLSearchParams(window.location.search).get('id'),
+					form = document.querySelector('.form');
+				if (!id) {
+					form.innerText = `Missing ?id= parameter!`;
+				} else {
+					getSessionInfo().then((data) => {
+						if (data == null) {
+							return window.location.replace(`${window.location.origin.includes('github') ? 'https://axorax.github.io/revlist' : window.location.origin}/login`);
+						}
+						api.run(`botlist/${id}/owner`, (owner) => {
+							if (data.id != owner.id) {
+								return (form.innerText = `Invalid user! (not bot owner)`);
+							}
+							const prefix = document.querySelector('.bot-prefix');
+							const tags = document.querySelector('.bot-tags');
+							api.run(`botlist/raw/${id}`, (data) => {
+								prefix.value = data.p;
+								data.t.forEach((tag) => {
+									tags.value += tag + ', ';
+								});
+								tags.value = tags.value.slice(0, -2);
+							});
+							document.querySelector('button.s1').addEventListener('click', () => {
+								api.run(`edit-bot/${id}?session=${data.session}&prefix=${prefix.value}&tags=${tags.value}`, (data) => {
+									notice(`Data saved!`);
+								});
+							});
+						});
+					});
+				}
+			</script>
+		</revlist-imports>
+	</body>
+</html>

@@ -1,0 +1,290 @@
+/* -- index.html Styling -- */
+
+:root {
+	--landing-bg: #252525;
+}
+
+.landing {
+	height: calc(100vh - 55px);
+	position: relative;
+	display: flex;
+	align-items: center;
+}
+
+.landing-bg {
+	background:
+		radial-gradient(circle, transparent 20%, #111 20%, #111 80%, transparent 80%, transparent),
+		radial-gradient(circle, transparent 20%, #111 20%, #111 80%, transparent 80%, transparent) 25px 25px,
+		linear-gradient(var(--landing-bg) 2px, transparent 2px) 0 -1px,
+		linear-gradient(90deg, var(--landing-bg) 2px, #111 2px) -1px 0;
+	background-size:
+		50px 50px,
+		50px 50px,
+		25px 25px,
+		25px 25px;
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	z-index: -2;
+}
+
+.landing::after {
+	content: '';
+	width: 100%;
+	background-image: linear-gradient(to right, #fc5c7d, #6a82fb);
+	height: max(0.3vw, 4px);
+	position: absolute;
+	bottom: 0;
+}
+
+.landing .content {
+	width: 25.5rem;
+	min-width: 40vw;
+	height: 100%;
+	background: #191a1c4b;
+	padding: 1.5rem max(3vw, 3rem);
+	backdrop-filter: blur(3px);
+	border-radius: 5px;
+	display: flex;
+	justify-content: center;
+	flex-direction: column;
+	border-right: 1px solid #3d3d3da1;
+}
+
+.landing .content::after {
+	content: '🎗️ Revlist v1.0.0';
+	position: absolute;
+	bottom: max(2vw, 2rem);
+	font-size: max(0.8vw, 0.6rem);
+	left: 50%;
+	transform: translate(-50%);
+}
+
+.landing .side-content {
+	width: calc(100% - 25.5rem);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 100%;
+}
+
+.landing .side-content .box {
+	background: #191a1c4b;
+	backdrop-filter: blur(3px);
+	padding: max(1vw, 1rem);
+	border-radius: max(0.6vw, 5px);
+	border: 1px solid #3d3d3d;
+	min-width: 15rem;
+	max-width: max(20vw, 18rem);
+	user-select: none;
+}
+
+.landing .side-content .box .bio {
+	line-break: strict;
+	line-height: 1.2;
+	opacity: 0.5;
+	margin-top: 1rem;
+}
+
+.landing .side-content .box button {
+	margin-top: max(1.2vw, 1rem);
+	width: 100%;
+}
+
+.landing h1 {
+	font-size: max(2.4vw, 2.4em);
+}
+
+.landing p {
+	font-size: max(1vw, 14.5px);
+}
+
+.landing h1,
+.landing .content p,
+.landing .box {
+	animation: slide-up 600ms ease;
+}
+
+.landing .side-content .box .title {
+	font-size: max(1.2vw, 1.2rem);
+}
+
+.landing .side-content .box .top {
+	display: flex;
+	gap: 1rem;
+	align-items: center;
+}
+
+.landing .side-content .box img {
+	aspect-ratio: 1/1;
+	width: max(1.6vw, 35px);
+}
+
+.landing .button-group {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	gap: 1rem;
+}
+
+@media (max-width: 710px) {
+	.landing .side-content .box {
+		position: absolute;
+		bottom: 2rem;
+		left: 50%;
+		transform: translate(-50%);
+	}
+	.landing .content {
+		width: 100vw;
+		padding-bottom: 10rem;
+		align-items: center;
+	}
+	.landing .content p {
+		text-align: center;
+	}
+}
+
+.bot-section {
+	min-height: 100vh;
+}
+
+.bot-section h2 {
+	text-align: center;
+	margin-bottom: 3rem;
+	margin-top: 3rem;
+}
+
+.bot-wrapper {
+	justify-content: center;
+	display: flex;
+	gap: max(1vw, 1rem);
+	flex-wrap: wrap;
+	margin-top: max(3vw, 3rem);
+}
+
+/* -- Revlist Search -- */
+
+revlist-search {
+	position: relative;
+}
+
+revlist-search input {
+	border: none;
+	outline: none;
+	background: transparent;
+	border-radius: max(0.3vw, 5px);
+	border: 1px solid #3d3d3d;
+	font-size: max(0.9vw, 14px);
+	padding: max(0.6vw, 0.8rem);
+	padding-right: 4rem;
+	width: max(30vw, 28rem);
+	max-width: calc(100vw - 8rem);
+	margin-left: -1rem;
+}
+
+revlist-search input:focus {
+	border-color: #537fe7;
+}
+
+revlist-search button {
+	border-radius: max(0.2vw, 5px);
+	min-height: 29px;
+	min-width: 71px;
+	border: none;
+	cursor: pointer;
+	text-transform: lowercase;
+	position: absolute;
+	top: 50%;
+	transform: translate(0, -50%);
+	margin-left: min(-2vw, -3rem);
+	font-size: max(0.9vw, 14px);
+	padding: max(0.2vw, 0.3rem) max(0.6vw, 0.8rem);
+	font-size: max(0.7vw, 13px);
+	background: linear-gradient(to right, #537fe7, #26aff4);
+}
+
+/* -- Revlist Search Tags -- */
+
+revlist-search-tags {
+	display: flex;
+	justify-content: center;
+	margin-top: max(1.4vw, 1.5rem);
+	flex-wrap: wrap;
+	gap: max(0.6vw, 0.8rem);
+}
+
+revlist-search-tags button {
+	border: none;
+	background: #5358e7;
+	padding: max(0.3vw, 0.4rem) max(0.6vw, 0.8rem);
+	border-radius: max(0.3vw, 5px);
+	cursor: pointer;
+	font-size: max(0.8vw, 14px);
+}
+
+/* -- Revlist bolt -- */
+
+#electric-surge {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	z-index: -1;
+	pointer-events: none;
+}
+
+.bolt {
+	position: absolute;
+	top: 0;
+	width: 2px;
+	height: 100%;
+	opacity: 0;
+	background-color: rgba(255, 255, 255, 0.096);
+	animation: boltAnimation 0.8s linear infinite;
+	pointer-events: none;
+}
+
+/* -- Revlist index.html Keyframes -- */
+
+@keyframes boltAnimation {
+	0% {
+		opacity: 1;
+		transform: translateY(-100%);
+		filter: brightness(200%);
+	}
+	100% {
+		opacity: 0;
+		transform: translateY(100%);
+		filter: brightness(100%);
+	}
+}
+
+@keyframes neonAnimation {
+	0% {
+		color: #ff0000;
+	}
+	14% {
+		color: #ffbf00;
+	}
+	28% {
+		color: #ffff00;
+	}
+	42% {
+		color: #80ff00;
+	}
+	57% {
+		color: #00ff40;
+	}
+	71% {
+		color: #00ffff;
+	}
+	85% {
+		color: #0040ff;
+	}
+	100% {
+		color: #8000ff;
+	}
+}

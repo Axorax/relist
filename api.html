@@ -1,0 +1,208 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Revlist - API Documentation</title>
+		<link rel="stylesheet" href="./static/css/style.css" />
+		<link rel="shortcut icon" href="./static/images/revlist.svg" />
+		<style>
+			h3 {
+				letter-spacing: 0.5px;
+				font-size: 1.5rem;
+			}
+		</style>
+	</head>
+	<body>
+		<revlist-article-wrapper>
+			<revlist-article>
+				<h1>API Usage</h1>
+				<p>
+					API URL -
+					<a href="https://revlist.axorax.repl.co/">revlist.axorax.repl.co</a>
+				</p>
+				<br />
+
+				<h3>Revolt user information</h3>
+				<code>GET /user/:user_id</code>
+				<div class="table font-sm">
+					<table>
+						<thead>
+							<td>Example</td>
+							<td>Description</td>
+						</thead>
+						<tr>
+							<td>/user/01G...7XN</td>
+							<td>Get all data</td>
+						</tr>
+						<tr>
+							<td>/user/01G...7XN?data=createdAt,username</td>
+							<td>Get specific data</td>
+						</tr>
+					</table>
+				</div>
+
+				<hr />
+
+				<h3>Revolt server information</h3>
+				<code>GET /server/:server_id</code>
+				<div class="table font-sm">
+					<table>
+						<thead>
+							<td>Example</td>
+							<td>Description</td>
+						</thead>
+						<tr>
+							<td>/server/01G...AHH</td>
+							<td>Get all data</td>
+						</tr>
+						<tr>
+							<td>/server/01G...AHH?data=discoverable,ownerId,owner</td>
+							<td>Get specific data</td>
+						</tr>
+					</table>
+				</div>
+
+				<hr />
+
+				<h3>Vote for a bot</h3>
+				<code>GET /vote?id=author_id&bot=bot_id</code>
+				<div class="table font-sm">
+					<table>
+						<thead>
+							<td>Example</td>
+							<td>Description</td>
+						</thead>
+						<tr>
+							<td>/vote?id=01G...7XN&bot=01G...QTX</td>
+							<td>Vote for a bot</td>
+						</tr>
+					</table>
+				</div>
+
+				<hr />
+
+				<h3>Submit a bot</h3>
+				<code>GET /submit-bot?id=author_id&bot=bot_id&prefix=bot_prefix</code>
+				<div class="table font-sm">
+					<table>
+						<thead>
+							<td>Example</td>
+							<td>Description</td>
+						</thead>
+						<tr>
+							<td>/submit-bot?id=01G...7XN&bot=01G...QTX&prefix=r!</td>
+							<td>Submit a bot</td>
+						</tr>
+					</table>
+				</div>
+
+				<hr />
+
+				<h3>Login</h3>
+				<code>GET /requestlogin?id=author_id</code>
+				<div class="table font-sm">
+					<table>
+						<thead>
+							<td>Example</td>
+							<td>Description</td>
+						</thead>
+						<tr>
+							<td>/requestlogin?id=01G...7XN</td>
+							<td>Issue a login request</td>
+						</tr>
+					</table>
+				</div>
+
+				After creating a login request, the server will give you a token. The user must copy and paste `r!login &lt;token>` in Revolt, in any server that has the "Revlist" bot.
+
+				<hr />
+
+				<h3>Check login token verification</h3>
+				<code>GET /checklogin/:login_token</code>
+				<div class="table font-sm">
+					<table>
+						<thead>
+							<td>Example</td>
+							<td>Description</td>
+						</thead>
+						<tr>
+							<td>/checklogin/Wei28Wpd</td>
+							<td>Check if user login token is verified</td>
+						</tr>
+					</table>
+				</div>
+
+				After the token was created with requestlogin and the user pasted it, the system will verify the token. So, you can use checklogin and it will respond with either true or false.
+				<hr />
+
+				<h3>Botlist</h3>
+				<code>GET /botlist</code>
+				<div class="table font-sm">
+					<table>
+						<thead>
+							<td>Example</td>
+							<td>Description</td>
+						</thead>
+						<tr>
+							<td>/</td>
+							<td>Bot list information</td>
+						</tr>
+						<tr>
+							<td>/range/1/10</td>
+							<td>Bots in a range (sorted from most voted)</td>
+						</tr>
+						<tr>
+							<td>/ids</td>
+							<td>All bot ids in list</td>
+						</tr>
+						<tr>
+							<td>/raw</td>
+							<td>Raw JSON data</td>
+						</tr>
+						<tr>
+							<td>/raw/:bot_id</td>
+							<td>Raw JSON data for a certain bot</td>
+						</tr>
+						<tr>
+							<td>/search/:query</td>
+							<td>Search for a bot with id or name</td>
+						</tr>
+						<tr>
+							<td>/:bot_id</td>
+							<td>Information on a certain bot</td>
+						</tr>
+						<tr>
+							<td>/:bot_id/owner</td>
+							<td>Information about the owner of a bot</td>
+						</tr>
+						<tr>
+							<td>/usernames</td>
+							<td>All bot usernames in list</td>
+						</tr>
+						<tr>
+							<td>/tag/:tag_name</td>
+							<td>All bots with a certain tag</td>
+						</tr>
+						<tr>
+							<td>/random</td>
+							<td>One random bot from list</td>
+						</tr>
+						<tr>
+							<td>/random?amount=10</td>
+							<td>Random bots from list</td>
+						</tr>
+					</table>
+				</div>
+			</revlist-article>
+		</revlist-article-wrapper>
+
+		<footer>Made with ❤️ by <a href="https://patreon.com/axorax">Axorax</a></footer>
+
+		<revlist-imports>
+			<script src="./scripts/windrag.js"></script>
+			<script src="./scripts/api.js"></script>
+			<script src="./scripts/main.js"></script>
+		</revlist-imports>
+	</body>
+</html>

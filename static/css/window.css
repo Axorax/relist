@@ -1,0 +1,99 @@
+/* -- Revlist Window -- */
+
+.window {
+	position: fixed;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	border: 1px solid #3d3d3d;
+	backdrop-filter: blur(6px);
+	border-radius: 5px;
+	background: #1a1a1acb;
+	z-index: 999;
+	box-shadow: 0 0 15px #00000065;
+	min-width: 20rem;
+}
+
+.window .close {
+	background: #14141440;
+	border: 1px solid #3d3d3de2;
+	width: max-content;
+	border-radius: 5px;
+	margin: 0.5rem;
+	padding: 0.8rem 0.65rem 0.9rem 0.65rem;
+	cursor: pointer;
+	line-height: 0;
+	margin-left: auto;
+}
+
+.window .close:hover {
+	background: #3434344d;
+}
+
+.window .panel {
+	display: flex;
+	width: 100%;
+	border-bottom: 1px solid #7a7a7a74;
+	cursor: all-scroll;
+}
+
+.window hr {
+	margin: 1rem 0;
+	border: none;
+	border-radius: 5px;
+	border-bottom: 2px solid #7a7a7a74;
+}
+
+.window .center-text {
+	width: 100%;
+	border-radius: 6px;
+	margin: 1rem 0 1.3rem 0;
+	text-align: center;
+	font-size: 13px;
+	color: #ffffff90;
+	user-select: none;
+}
+
+.window .title {
+	display: flex;
+	padding: 0.6rem 1rem 0.5rem 1rem;
+	font-size: 1rem;
+}
+
+.window .body .header {
+	background: #fc3434;
+	margin: 1rem;
+	padding: 0.5rem 1rem;
+	border-radius: 5px;
+	width: calc(100% - 2rem);
+}
+
+.window .body .form {
+	padding: 1rem 1rem 1rem 1rem;
+}
+
+.window .body .form input,
+.window .body .form button {
+	width: 100%;
+}
+
+.window button {
+	margin-top: 1rem;
+	width: 100%;
+	cursor: pointer;
+	padding: 0.7rem 1rem;
+	border: none;
+	border-radius: 5px;
+	background: #537fe7;
+}
+
+.window code {
+	background: #1d1d1d;
+	border: 1px solid #3d3d3d;
+	border-radius: 5px;
+	padding: 0.3rem 0.5rem;
+	cursor: pointer;
+	margin: 0 0.4rem;
+	font-size: 13px;
+	line-height: 2.5;
+}

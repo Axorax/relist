@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Revlist - Find the best bots and join servers!</title>
+		<link rel="stylesheet" href="./static/css/style.css" />
+		<link rel="shortcut icon" href="./static/images/revlist.svg" />
+		<style>
+			revlist-flex-0-0 .form {
+				margin-top: 2rem;
+				width: 20rem;
+				max-width: calc(100% - 2rem);
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				flex-direction: column;
+				min-height: calc(100vh - 10rem);
+			}
+			revlist-flex-0-0 .form p {
+				line-break: strict;
+			}
+			revlist-flex-0-0 .form button {
+				width: 100%;
+			}
+		</style>
+	</head>
+	<body>
+		<main>
+			<revlist-flex-0-0>
+				<div class="form">
+					<input class="s1 user-id" type="text" placeholder="Your Revolt ID" style="width: 100%" />
+					<br />
+					<button class="s1 login-button" onclick="loginUser()">Login</button>
+				</div>
+			</revlist-flex-0-0>
+		</main>
+
+		<revlist-imports>
+			<script src="./scripts/windrag.js"></script>
+			<script src="./scripts/api.js"></script>
+			<script src="./scripts/main.js"></script>
+			<script src="./scripts//pages/login.js"></script>
+		</revlist-imports>
+	</body>
+</html>

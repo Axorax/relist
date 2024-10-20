@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Revlist - My profile</title>
+		<link rel="stylesheet" href="./static/css/style.css" />
+		<link rel="stylesheet" href="./static/css/info.css" />
+		<link rel="shortcut icon" href="./static/images/revlist.svg" />
+	</head>
+	<body>
+		<revlist-pf>
+			<revlist-pf-main>
+				<div class="header">
+					<div class="banner">
+						<img alt="Bot Banner" />
+						<div class="pfp">
+							<img alt="Bot Profile Image" />
+						</div>
+					</div>
+					<div class="name">
+						<span></span>
+						<div data-tooltip="Copy user ID">
+							<img src="./static/icons/copy.svg" alt="Copy" />
+						</div>
+					</div>
+				</div>
+
+				<p class="bio"></p>
+			</revlist-pf-main>
+
+			<revlist-pf-info>
+				<div class="details">
+					<div class="title">
+						<img src="./static/icons/info.svg" alt="Details" />
+						<p>Details</p>
+					</div>
+					<div class="content"></div>
+				</div>
+				<div class="details">
+					<div class="title">
+						<img src="./static/icons/people.svg" alt="Details" />
+						<p>Edit bot</p>
+					</div>
+					<div class="content" style="display: flex; gap: 1rem">
+						<input type="text" class="s1 bot-id" placeholder="Bot ID" />
+						<button class="s1" style="min-width: 5rem" onclick="botEdit()">Edit</button>
+					</div>
+				</div>
+			</revlist-pf-info>
+		</revlist-pf>
+
+		<revlist-imports>
+			<script src="./scripts/windrag.js"></script>
+			<script src="./scripts/api.js"></script>
+			<script src="./scripts/main.js"></script>
+			<script src="./scripts/pages/user.js"></script>
+			<script>
+				getSessionInfo().then((data) => {
+					if (data == null) {
+						return window.location.replace(`${window.location.origin.includes('github') ? 'https://axorax.github.io/revlist' : window.location.origin}/login`);
+					}
+					fillUserData(data.id);
+				});
+				function botEdit() {
+					const v = document.querySelector('.bot-id').value;
+					if (v.replaceAll(' ', '') == '') return;
+					window.location.replace(`${window.location.origin.includes('github') ? 'https://axorax.github.io/revlist' : window.location.origin}/edit-bot.html?id=${v}`);
+				}
+			</script>
+		</revlist-imports>
+	</body>
+</html>

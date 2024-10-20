@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Revlist - Find the best bots and join servers!</title>
+		<link rel="stylesheet" href="./static/css/style.css" />
+		<link rel="shortcut icon" href="./static/images/revlist.svg" />
+		<style>
+			revlist-flex-0-0 .form {
+				margin-top: 2rem;
+				width: 20rem;
+				max-width: calc(100% - 2rem);
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				flex-direction: column;
+				min-height: calc(100vh - 10rem);
+			}
+			revlist-flex-0-0 .form p {
+				line-break: strict;
+			}
+			revlist-flex-0-0 .form button {
+				width: 100%;
+			}
+		</style>
+	</head>
+	<body>
+		<main>
+			<revlist-flex-0-0>
+				<div class="form">
+					<input class="s1" type="text" id="submit-bot-id" style="width: 100%" placeholder="Your Revolt ID" /><br />
+					<input class="s1" type="text" id="submit-bot-bot" style="width: 100%" placeholder="Revolt Bot ID" /><br />
+					<input class="s1" type="text" id="submit-bot-prefix" style="width: 100%" placeholder="Bot Prefix (e.g ?, r!)" /><br />
+					<input class="s1" type="text" id="submit-bot-tags" style="width: 100%" placeholder="Tags (separate by comma)" /><br />
+					<button class="submit-bot-confirm s1">Submit</button>
+				</div>
+			</revlist-flex-0-0>
+		</main>
+
+		<revlist-imports>
+			<script src="./scripts/windrag.js"></script>
+			<script src="./scripts/api.js"></script>
+			<script src="./scripts/main.js"></script>
+			<script>
+				const form = document.querySelector('.form');
+				function submitBot() {
+					const id = document.querySelector('.bot-id').value;
+					const prefix = document.querySelector('.bot-prefix').value;
+					const tags = document.querySelector('.bot-tags').value;
+					api.run(`submit-bot?bot=${id}&prefix=${prefix}&session=${session.session}&tags=${tags}`, (data) => {
+						if (data.error) {
+							document.querySelector(`.form`).innerHTML = `Error: ${data.message}`;
+						} else {
+							document.querySelector(`.form`).innerText = `✨ Great! Your bot has been submitted!`;
+						}
+					});
+				}
+				getSessionInfo().then((data) => {
+					if (data) {
+						form.innerHTML = `
+                <input class="s1 bot-id" type="text" placeholder="Revolt Bot ID" style="width: 100%;"> <br>
+                <input class="s1 bot-prefix" type="text" placeholder="Bot Prefix (e.g ?, r!)" style="width: 100%;"> <br>
+                <input
+            class="s1 bot-tags"
+            type="text"
+            style="width: 100%;"
+            placeholder="Tags (separate by comma)"
+          /><br />
+                <button class="s1 submit-button" onclick="submitBot()">Submit</button>`;
+					} else {
+						setTimeout(() => {
+							document.querySelector(`.submit-bot-confirm`).addEventListener('click', () => {
+								const bot = document.querySelector(`#submit-bot-bot`).value;
+								const author = document.querySelector(`#submit-bot-id`).value;
+								const prefix = document.querySelector(`#submit-bot-prefix`).value;
+								const tags = document.querySelector(`#submit-bot-tags`).value;
+								if (bot.replaceAll(' ', '') == '' || author.replaceAll(' ', '') == '') return;
+								api.run(`submit-bot?id=${author}&bot=${bot}&prefix=${prefix}&tags=${tags}`, (data) => {
+									if (data.error) {
+										document.querySelector(`.form`).innerHTML = `Error: ${data.message}`;
+									} else {
+										document.querySelector(`.form`).innerHTML = `
+                    <p>
+                        1) Join <a href="https://app.revolt.chat/invite/01GVK81S6KZJF5E0EVDGD75AHH">this server</a> <br><br>
+                    2) Type <code onclick='navigator.clipboard.writeText("r!submit ${data.token}")'>r!submit ${data.token}</code> in any channel.
+                    <br><br><button onclick="this.parentNode.innerText='✨ Great! Your bot has been submitted!'" class="s1">Done</button></p>
+                    `;
+									}
+								});
+							});
+						}, 1000);
+					}
+				});
+			</script>
+		</revlist-imports>
+	</body>
+</html>
